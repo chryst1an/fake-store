@@ -4,7 +4,7 @@ import { SignUpComponent } from "../sign-up/sign-up.component";
 
 @Component({
   selector: 'app-login',
-  imports: [LoginFormComponent, SignUpComponent],
+  imports: [LoginFormComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
