@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-toolbar-navigation',
@@ -8,5 +9,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './toolbar-navigation.component.scss'
 })
 export class ToolbarNavigationComponent {
+
+  constructor(
+    public userService: UserService
+  ){}
 
 }

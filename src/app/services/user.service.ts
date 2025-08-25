@@ -31,4 +31,12 @@ export class UserService {
     const JWT_TOKEN = this.cookie.get('USER_INFO');
     return JWT_TOKEN ? true : false;
   }
+
+  saveUserToken(token: string): void{
+  this.cookie.set('USER_INFO', token);
+  }
+
+  logout(): void {
+    this.cookie.delete('USER_INFO');
+  }
 }

@@ -1,1 +1,7 @@
-<app-login-form></app-login-form>
+@if(!showSignUp){
+  <app-login-form></app-login-form>
+}
+@if(showSignUp){
+  <app-sign-up></app-sign-up>
+}
+

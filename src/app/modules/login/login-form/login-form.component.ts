@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { AuthRequest } from '../../../models/interfaces/user/auth/AuthRequest';
+import { LoginComponent } from '../page/login/login.component';
 
 @Component({
   selector: 'app-login-form',
@@ -22,7 +23,8 @@ export class LoginFormComponent implements OnDestroy{
     private formBuilder: FormBuilder,
     private userService: UserService,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    public loginPage: LoginComponent
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class LoginFormComponent implements OnDestroy{
         .subscribe({
           next: (response) => {
             if (response) {
-              this.cookieService.set('USER_INFO', response?.token);
+              this.userService.saveUserToken(response.token);
               this.loginForm.reset();
               this.errorMessage = '';
 
