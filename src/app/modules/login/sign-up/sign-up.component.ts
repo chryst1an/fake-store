@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginComponent } from '../page/login/login.component';
 
 @Component({
@@ -12,5 +12,8 @@ export class SignUpComponent {
   constructor(
     public loginPage: LoginComponent
   ){}
+
+  @Output() changeForm = new EventEmitter<void>();
+
 
 }

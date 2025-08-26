@@ -4,7 +4,9 @@
     <h2 class="fs-4 text-center text-white-900 pt-3 pb-4">Descubra produtos incríveis com os melhores preços</h2>
     <div class="d-flex justify-content-center gap-3 pb-5 py-3">
       <button class="btn btn-light px-4">Ver produtos</button>
-      <button routerLink="/login" class="btn btn-light px-4">Entrar</button>
+      @if (!userService.isLoggedIn()) {
+        <button routerLink="/login" class="btn btn-light px-4">Entrar</button>
+      }
     </div>
   </div>
 </div>

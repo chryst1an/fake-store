@@ -2,8 +2,8 @@
   <div class="col-12 pt-5 mt-5 text-center">
     <h1 class="fs-3 fw-bold">Entre na sua conta</h1>
     <span>Ou </span>
-    <a class="text-decoration-none" href="#" (click)="loginPage.alterForm(); $event.preventDefault();"
-      >crie uma nova conta</a
+    <a class="text-decoration-none" href="#" (click)="changeForm.emit(); $event.preventDefault();"
+    >crie uma nova conta</a
     >
   </div>
   <div class="container rounded-3 col-lg-4 mt-5 bg-black">
@@ -14,24 +14,24 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
         <div class="mb-3">
           <label class="form-label text-white" for="name"
-            >Nome de usuário</label
+          >Nome de usuário</label
           >
           <input
-            class="form-control bg-black text-white"
-            id="username"
-            type="text"
-            formControlName="username"
-            placeholder="Digite seu nome de usuário"
+          class="form-control bg-black text-white"
+          id="username"
+          type="text"
+          formControlName="username"
+          placeholder="Digite seu nome de usuário"
           />
         </div>
         <div class="mb-3">
           <label class="form-label text-white" for="name">Senha</label>
           <input
-            class="form-control bg-black text-white"
-            type="password"
-            id="password"
-            formControlName="password"
-            placeholder="Digite sua senha"
+          class="form-control bg-black text-white"
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Digite sua senha"
           />
         </div>
         <div class="d-grid gap-2 col-auto mx-auto">

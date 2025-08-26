@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { AuthResponse } from '../models/interfaces/user/auth/AuthResponse';
 import { SignupUserResponse } from '../models/interfaces/user/signup/SignupUserResponse';
 import { SignupUserRequest } from '../models/interfaces/user/signup/SignupUserRequest';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private router: Router
   ) { }
 
   authUser(requestDatas: AuthRequest): Observable<AuthResponse> {
@@ -38,5 +40,6 @@ export class UserService {
 
   logout(): void {
     this.cookie.delete('USER_INFO');
+    this.router.navigate(['/home']);
   }
 }

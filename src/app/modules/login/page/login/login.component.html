@@ -1,7 +1,6 @@
 @if(!showSignUp){
-  <app-login-form></app-login-form>
-}
-@if(showSignUp){
-  <app-sign-up></app-sign-up>
+<app-login-form (loginSuccess)="loginSuccess.emit()" (changeForm)="alterForm()"></app-login-form>
+} @if(showSignUp){
+<app-sign-up (changeForm)="alterForm()"></app-sign-up>
 }
 

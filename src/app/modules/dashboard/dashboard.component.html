@@ -1,2 +1,47 @@
-<h1>Dashboard</h1>
-<h2>Bem-vindo</h2>
+<div class="container-flex m-5">
+  <div class="d-flex flex-row justify-content-between">
+    <div class="container-flex">
+      <h1 class="fw-bold">Dashboard</h1>
+      <span class="welcome fw-medium">Bem-vindo, pessoa</span>
+    </div>
+    <div class="container-flex align-content-center me-4">
+      <button
+        (click)="userService.logout()"
+        type="button"
+        class="btn btn-light border fw-medium px-3 justify-content-end"
+      >
+        <i class="bi bi-box-arrow-right me-2"></i>Sair
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="btn-group py-5"
+    role="group"
+    aria-label="Basic radio toggle button group"
+  >
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="btnradio1"
+      autocomplete="off"
+      checked
+    />
+    <label class="btn btn-outline-secondary" for="btnradio1"
+      ><i class="bi bi-box-seam me-2"></i>Produtos</label
+    >
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="btnradio2"
+      autocomplete="off"
+    />
+    <label class="btn btn-outline-secondary" for="btnradio2"
+      ><i class="bi bi-person me-2"></i>Perfil</label
+    >
+  </div>
+  <app-products-list></app-products-list>
+</div>

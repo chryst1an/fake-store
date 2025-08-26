@@ -1,6 +1,6 @@
 import { Routes, CanActivate } from '@angular/router';
 import { HomePageComponent } from './modules/home-page/home-page.component';
-import { ProductPageComponent } from './modules/product-page/product-page.component';
+import { ProductPageComponent } from './modules/product/product-page/product-page.component';
 import { LoginComponent } from './modules/login/page/login/login.component';
 import { authGuard } from './guards/auth-guard.guard';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';

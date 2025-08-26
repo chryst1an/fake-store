@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginFormComponent } from '../../login-form/login-form.component';
 import { SignUpComponent } from "../../sign-up/sign-up.component";
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import { SignUpComponent } from "../../sign-up/sign-up.component";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+
+  @Output() loginSuccess = new EventEmitter<void>();
 
   showSignUp = false;
 

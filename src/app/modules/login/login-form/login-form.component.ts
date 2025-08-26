@@ -1,11 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { AuthRequest } from '../../../models/interfaces/user/auth/AuthRequest';
-import { LoginComponent } from '../page/login/login.component';
 
 @Component({
   selector: 'app-login-form',
@@ -13,18 +12,21 @@ import { LoginComponent } from '../page/login/login.component';
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })
-export class LoginFormComponent implements OnDestroy{
+export class LoginFormComponent implements OnDestroy {
+  @Output() loginSuccess = new EventEmitter<any>();
+  @Output() changeForm = new EventEmitter<void>();
+
   private destroy$ = new Subject<void>();
 
   loginForm!: FormGroup;
   errorMessage: string = '';
+  showSuccess = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private cookieService: CookieService,
-    private router: Router,
-    public loginPage: LoginComponent
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,11 +49,14 @@ export class LoginFormComponent implements OnDestroy{
             if (response) {
               this.userService.saveUserToken(response.token);
               this.loginForm.reset();
+              this.showSuccess = true;
+              this.loginSuccess.emit({});
               this.errorMessage = '';
 
-              console.log("Sucesso!", response)
-              this.router.navigate(['/home']);
-            } else{
+              this.router.navigate(['/home'], {
+                state: { loginSuccess: true }
+              });
+            } else {
               this.errorMessage = 'Resposta inválida!'
             }
           },
