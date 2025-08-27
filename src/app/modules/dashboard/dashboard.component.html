@@ -28,7 +28,7 @@
       autocomplete="off"
       checked
     />
-    <label class="btn btn-outline-secondary" for="btnradio1"
+    <label class="btn btn-outline-secondary" (click)="alterList('products')" for="btnradio1"
       ><i class="bi bi-box-seam me-2"></i>Produtos</label
     >
 
@@ -39,9 +39,13 @@
       id="btnradio2"
       autocomplete="off"
     />
-    <label class="btn btn-outline-secondary" for="btnradio2"
+    <label class="btn btn-outline-secondary" (click)="alterList('profile')" for="btnradio2"
       ><i class="bi bi-person me-2"></i>Perfil</label
     >
   </div>
-  <app-products-list></app-products-list>
+  @if (selectedComponent === 'products') {
+    <app-products-list></app-products-list>
+  } @if (selectedComponent === 'profile') {
+    <app-profile></app-profile>
+  }
 </div>
