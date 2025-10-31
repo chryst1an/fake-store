@@ -1,3 +1,8 @@
+@if (errorMessage){
+  <div class="alert-container">
+    <ngb-alert [type]="'danger'" (closed)="errorMessage = ''">{{errorMessage}}</ngb-alert>
+  </div>
+}
 <div class="container">
   <div class="col-12 pt-5 mt-5 text-center">
     <h1 class="fs-3 fw-bold">Entre na sua conta</h1>

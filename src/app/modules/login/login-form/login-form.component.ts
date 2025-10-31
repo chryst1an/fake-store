@@ -5,10 +5,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { AuthRequest } from '../../../models/interfaces/user/auth/AuthRequest';
+import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgbAlert],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })

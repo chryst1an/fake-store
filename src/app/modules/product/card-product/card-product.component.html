@@ -1,19 +1,30 @@
-<div class="card" style="width: 20rem">
-  <div class="container pt-5 mb-2" style="width: 15rem">
-    <img
-      class="img-fluid border-0"
-      src="https://dw0jruhdg6fis.cloudfront.net/producao/24866653/G/camisa_branca.jpg"
-      alt="bag"
-    />
+@if (loading){
+<div class="loading">Carregando produtos...</div>
+} @if (!loading){
+<div class="row row-cols-1 row-cols-md-3 g-5">
+  @for (product of products; track product.id) {
+  <div class="col">
+    <div class="card" style="width: 20rem">
+      <div class="card-body row m-1">
+        <div class="image-container">
+          <img [src]="product.image" [alt]="product.title" />
+        </div>
+        <p class="badge text-bg-light rounded-5 ms-2 m-3" style="width: auto">
+          {{ product.category }}
+        </p>
+        <h5 class="">
+          {{ product.title | slice : 0 : 20
+          }}{{ product.title.length > 20 ? "..." : "" }}
+        </h5>
+        <p class="card-text">
+          {{ product.description | slice : 0 : 80
+          }}{{ product.description.length > 80 ? "..." : "" }}
+        </p>
+        <p class="fs-3 text-success font-bold mb-3">R$ {{ product.price }}</p>
+        <a routerLink="/product" class="btn btn-dark">Ver Detalhes</a>
+      </div>
+    </div>
   </div>
-  <div class="card-body row m-1">
-    <span class="badge text-bg-light rounded-5 ms-2" style="width: auto;"> men's clothing </span>
-    <h5 class="card-title pt-2">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the cards content.
-    </p>
-    <span class="fs-3 text-success font-bold mb-3">$109.92</span>
-    <a routerLink="/product" class="btn btn-dark">Ver Detalhes</a>
-  </div>
+  } @empty { <span>Não há produtos para exibir</span> }
 </div>
+}
