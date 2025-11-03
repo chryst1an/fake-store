@@ -1,12 +1,27 @@
-<div class="container-flex m-4" style="width: 13rem;">
+<div class="container-flex m-4" style="width: 13rem">
   <div class="row border justify-content-center rounded">
     <h1 class="fs-3 ms-4 mt-3">Categoryes</h1>
     <div class="mb-3 mt-3 row gap-2 px-3">
-      <button class="btn btn-dark border text-start">All Categoryes</button>
-      <button class="btn btn-light border text-start">Electronics</button>
-      <button class="btn btn-light border text-start">Jewelery</button>
-      <button class="btn btn-light border text-start">Men's Clothing</button>
-      <button class="btn btn-light border text-start">Women's Clothing</button>
+      <button
+        class="btn btn-dark border text-start"
+        [ngClass]="selectedCategory === 'all' ? 'btn-dark' : 'btn-light border'"
+        (click)="onSelectCategory('all')"
+      >
+        All Categoryes
+      </button>
+
+      @for (category of categories; track category) {
+      <button
+        class="btn btn-light border text-start"
+        [ngClass]="
+          selectedCategory === category ? 'btn-dark' : 'btn-light border'
+        "
+        (click)="onSelectCategory(category)"
+      >
+        {{ category }}
+      </button>
+
+      }
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 @if (loading){
 <div class="loading">Carregando produtos...</div>
 } @if (!loading){
-<div class="row row-cols-1 row-cols-md-3 g-5">
+<div class="row row-cols row-cols-lg-3 g-3" style="width: 65rem;">
   @for (product of products; track product.id) {
   <div class="col">
     <div class="card" style="width: 20rem">
@@ -12,7 +12,7 @@
         <p class="badge text-bg-light rounded-5 ms-2 m-3" style="width: auto">
           {{ product.category }}
         </p>
-        <h5 class="">
+        <h5 class="card-title">
           {{ product.title | slice : 0 : 20
           }}{{ product.title.length > 20 ? "..." : "" }}
         </h5>
@@ -21,7 +21,7 @@
           }}{{ product.description.length > 80 ? "..." : "" }}
         </p>
         <p class="fs-3 text-success font-bold mb-3">R$ {{ product.price }}</p>
-        <a routerLink="/product" class="btn btn-dark">Ver Detalhes</a>
+        <a [routerLink]="['/product', product.id]" class="btn btn-dark">Ver Detalhes</a>
       </div>
     </div>
   </div>

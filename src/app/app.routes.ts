@@ -26,6 +26,10 @@ export const routes: Routes = [
     component: ProductPageComponent
   },
   {
+    path: 'product/:id',
+    component: ProductPageComponent
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard]
